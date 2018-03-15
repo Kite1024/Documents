@@ -1,0 +1,279 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[toc,page]{appendix}
+\usepackage{tabularx}
+\usepackage[left]{eurosym}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\usepackage{listings}
+
+% Meta
+\providecommand{\versionnumber}{1.2}
+\title{Wyvern: Cost-reduced Community Dedicated Server\\\normalsize \textit{Version \versionnumber}}
+\author{Jerom van der Sar}
+\date{\today}
+
+
+\begin{document}
+
+% Title page
+\pagenumbering{gobble}
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+\pagenumbering{arabic}
+
+% ToC
+\tableofcontents
+\newpage
+
+\section{Overview}
+Wyvern is the idea to collaboratively rent a single bare metal server. The intent is to support several gaming servers for community use, as well as provide options to host small personal web applications. By spreading financial load, the cost per person is reduced, expected to be as low as three euros. Wyvern users may access the server through an SSH connection, as well as SFTP to manage files and applications. In addition, subgroups of users may host more computationally expensive applications as system resources are shared.
+
+This rest of this document describes the specifics of the Wyvern project, such as financial and administrative responsibilities, server policies and democratic decisioning. These are first introduced in sections \ref{sec:administration}, \ref{sec:policy}, and \ref{sec:technical}. A complete description of the decision-making process, responsibilities of the administration team, and the voting process is presented in appendix \ref{sec:bureaucracy}. Lastly, a guide on how to setup SSH to connect through key-based authentication is provided in \ref{sec:ssh}.
+
+\section{Administration}
+\label{sec:administration}
+To ensure that the server is operated properly, careful thought must be put towards the administration of a server. In particular, it is important a user is appointed to maintain financial responsibility to ensure payments are received and bills are paid on time. Another important aspect is technical responsibility. Intuitively, providing each user with root-level access is unwanted as this can easily lead to system instability. For this reason, a user will also need to bear technical responsibility. Lastly, one user must provide oversight for the entire project, reporting to the rest of the users key information, and overseeing that democratic decisions properly realized. It is solely these three people who should have access to the administrative accounts to manage the server.
+
+\subsection{Financial Responsibility}
+The Wyvern chief of finance manages the financial aspect of the server. It is this user who pays bills, and this user who receives payments from each user. The chief of finance is responsible that bills are paid on time, and that the correct amount of money is received from each user.
+
+\subsection{Technical Responsibility}
+The Wyvern chief of technology manages the technical aspect of the server. Whenever applications are requested to be installed, this user will attempt to do so. In addition, this user is responsible for the security aspect of the server, ensuring each user may connect in a secure manner, and that the Wyvern server is up to date with the latest security patches.
+
+\subsection{Oversight}
+The Wyvern director is responsible for ensuring that the desires of the Wyvern users are respected and followed. The director directly reports to all Wyvern users about important issues, and attempts to resolve issues in de decision making process, should they arise.
+
+\section{Policy}
+\label{sec:policy}
+Below is described an overview of the initial server policies. Note that the policies in effect may change over time as the needs and desires of the Wyvern community change. Most importantly, it is necessary users have \textit{trust} and \textit{respect} for one another. As this project is an ambitious and community-driven effort, it is in the best interest for everyone that each user makes a wholehearted attempt to ensure everyone is satisfied. This, in turn, means that at times some concessions must be made. Whilst Wyvern should incorporate a democratic decision making process, each user must attempt to remain friendly to their co-users and resolve conflicts in a group effort.
+
+\subsection{Fair Use}
+As the Wyvern server is shared across users, the available resources will be shared as well. This means that each user must put an effort to ensuring that their applications do not greatly overextend the server's resources. Some applications, such as game servers, will benefit multiple users, and thus may take up a large fraction of the allocated quota. Whilst a hard-limit is not placed on the available resources, users should use their best judgment and strive to avoid over allocation. This does not mean that if a fraction of the server's resource capacity is unused, users should avoid allocating it. Using the server to its fullest extent is allowed, as long as other users are not limited.
+
+\subsection{Democratic Management}
+In effect, the Wyvern project is designed to be managed in a democratic fashion. If large changes are desired to be made, the director should host community meetings in which all Wyvern users should vote. The director should attempt to host these meetings to the best of their ability and ensure every user's wishes are taken into account.
+
+\section{Technical Aspects}
+\label{sec:technical}
+Operating a community server such as Wyvern is only possible when certain technical decisions are taken with care.
+
+\subsection{Operating System}
+When selecting a proper operating system, it may be beneficial to chose either a RedHat-based (such as CentOS) or Debian-based (such as Ubuntu-Server) Linux distribution. The reason for this is the availability of on-line support for both operating system branches, as these are the most popular choices. For this reason, the chief of technology should advise the users on which option might be best suited.
+
+\subsection{Users}
+On Wyvern, each user should obtain a unique account which may be used to access the server through SSH. In addition, each user is allowed to store files and applications ins their home directories (\textit{/home/<user>/}). These directories may have an imposed disk space quota to ensure no user is restricted in space. If specific platform applications or tool-chains (Java, Docker, SoftEther), need be installed with root-privileges, users should contact the chief of technology. Administrative users will each have a \textit{separate} account which they may use to install such applications. However, this account \textit{should never be used} to host personal applications.
+
+\subsection{Security}
+It is important that security plays a major role in the management of the server. For this reason, users may be required to log in to SSH through a security certificate, instead of password-interactive authentication. In addition, requests for non-secure applications, such as outdated HTTP daemons and known applications with security vulnerabilities, may be declined.
+
+\subsection{Shared Applications}
+For certain applications such as game servers, it may be beneficial to allocate a separate user account so several users, hereafter referred to as \textit{application owners}, may manage the application collaboratively. As previously stated, the fair use policy will be less strict for such applications.
+
+% Appendices
+\newpage
+\begin{appendices}
+
+\section{Guidelines \& Regulations}
+\label{sec:bureaucracy}
+This section describes the process in which the Wyvern project is governed. In particular, the roles, responsibilities and capabilities of the administration team are formally introduced. In addition, the voting process is further described. Lastly, the financial responsibilities of Wyvern members are introduced.
+
+\subsection{Administration Team Roles}
+\begin{enumerate}
+    \item The Wyvern project has an administration team consisting of three Wyvern members: the \emph{director}, the \emph{chief of finance}, and the \emph{chief of technology}.
+    
+    \begin{item}
+        The responsibilities and duties of the director are:
+        \begin{enumerate}
+            \item to represent the interests and desires of all Wyvern members in the Wyvern administration team;
+            \item to oversee the administration team, ensuring the administrators are in compliance with Wyvern policies;
+            \item to facilitate Wyvern community meetings, ensuring the democratic process is properly adhered to;
+            \item to plan and reserve a space for Wyvern community meetings;
+            \item to promote good communication and resolve conflicts within the Wyvern project.
+        \end{enumerate}
+    \end{item}
+
+    \begin{item}
+        The responsibilities and duties of the chief of finance are:
+        \begin{enumerate}
+            \item to ensure the financial obligations of the Wyvern project are met;
+            \item to ensure the financial obligations of Wyvern members are met;
+            \item to record and update financial transactions and information for the Wyvern server;
+            \item to act as secretary during Wyvern meetings, documenting all Wyvern discussions and votings in meetings;
+            \item to oversee other financial aspects of the Wyvern project.
+        \end{enumerate}
+    \end{item}
+
+    \begin{item}
+        The responsibilities and duties of the chief of technology are:
+        \begin{enumerate}
+            \item to ensure the proper functioning of the Wyvern server;
+            \item to implement technical changes on the Wyvern server in accordance with the desires of the Wyvern server;
+            \item to track and report on changes of Wyvern server during community meetings;
+            \item to manage security-related aspects of the Wyvern server, thus ensuring a secure working environment for Wyvern members.
+        \end{enumerate}
+    \end{item}
+\end{enumerate}
+
+\subsection{Democratic Process}
+\begin{enumerate}
+    \item Wyvern decision-making is to take place during Wyvern meetings, in which \emph{votings} will be held.
+
+    \item Solely the director is in charge of the voting process and may initiate, suspend, resume, and restart a voting.
+
+    \item Before a vote is held, the director must allow for members to abstain from voting. Abstaining is only possible by leaving the room in which the voting is held.
+    
+    \item Wyvern members whom are neither physically nor digitally present during a meeting abstain on all votes by default.
+
+    \item Only Wyvern members whom contribute money to the applicable half-yearly term may vote. The director decides upon which term the vote is applicable. Potential Wyvern members do not have a vote.
+    
+    \item A voting must be preceded by an open discussion of at least 5 minutes, where potential options are discussed. The director then decides which options have enough support to be included in the voting, before the voting can start.
+    
+    \item A voting consists of a number of options, each of which may be voted for. Wyvern members may vote for multiple options.
+
+    \begin{item}
+        There are two types of votings:
+        \begin{enumerate}
+            \item normal votings;
+            \item unanimous votings.
+        \end{enumerate}
+    \end{item}
+
+    \item If a decision must be made upon a money-related issue, the voting must be unanimous. Otherwise, the director decides whichever voting type is applicable before the vote is started.
+
+    \begin{item}
+        For a normal voting to succeed, the following conditions must be met:
+        \begin{enumerate}
+            \item at least 3 Wyvern members vote (non-abstaining);
+            \item at least one Wyvern administrator participates (non-abstaining);
+        \end{enumerate}
+    \end{item}
+
+    \begin{item}
+        For a unanimous voting to succeed, the following conditions must be met:
+        \begin{enumerate}
+            \item at least 5 Wyvern members vote (non-abstaining);
+            \item only a single option has more than zero votes.
+        \end{enumerate}
+    \end{item}
+
+    \begin{item}
+        In a successful voting, the most selected option is selected. In case of a tie, the administration team may (re)discuss the options, after which the director settles the vote by either:
+        \begin{enumerate}
+            \item taking an executive decision, thus deciding upon an option,
+            \item restarting the vote, possibly with a modified set of options,
+            \item postponing the vote, possibly indefinitely.
+        \end{enumerate}
+    \end{item}
+    
+    
+\end{enumerate}
+
+\subsection{Financial Responsibility}
+In the Wyvern meeting of 2017-09-26, it was established that there should be shared financial responsibility in the unlikely, but possible, event of unexpected costs. This section formalizes that agreement. Above all, it is important that Wyvern members place good faith and trust each other to comply with their financial obligations subject to this section.
+
+\begin{enumerate}
+    
+    \item At the end of each Wyvern term, a meeting must be held to discuss the continuation of the Wyvern project. In this meeting, new members ('potential members') may be present to join the Wyvern server.
+
+    \item If during a meeting, a potential member agrees to join the Wyvern project, he or she becomes a Wyvern member and gains voting power and financial responsibility with respect to the contribution of the Wyvern server for the coming term.
+    
+    \item Wyvern members leaving the Wyvern project at the end of the term lose financial responsibility and voting power.
+    
+    \item Wyvern members agreeing to continue the Wyvern project for the next term during a meeting, he or she gains financial responsibility for the contribution of the next term.
+    
+    \begin{item}
+         In case of unexpected costs resulting from the operation of the Wyvern server, services hosted by the Wyvern project, or by services hosted by members of the Wyvern community, the director must host an exceptional meeting to discuss the issue.
+        
+        \begin{enumerate}
+            \item During such an exceptional meeting regarding unexpected financial damage, the origin must be determined and the extent of the damage must be quantified.
+
+            \begin{item}
+                The meeting must decide by a \emph{normal voting} one of the following two: 
+                
+                \begin{enumerate}
+                    \item the financial damage has as basis the negligence of a single Wyvern member or a group thereof,
+                    \item the financial damage has as basis the normal operation of Wyvern services.
+                \end{enumerate}
+            \end{item}
+        
+            \item In case that item (3.1.b.i) holds true, the financial responsibility and obligation to pay is placed upon the responsible Wyvern member or group thereof.
+            
+            \item In case that item (3.1.b.ii) holds true, the shared financial responsibility and obligation to pay is placed equally upon all Wyvern members.
+            
+            \item Financial responsibility includes the responsibility to pay the financial damage (or fraction of the financial damage) within the timespan and with the conditions to be decided upon by the director.
+        \end{enumerate}
+
+    \end{item}
+\end{enumerate}
+
+
+\newpage
+\section{SSH Access}
+\label{sec:ssh}
+
+On the Wyvern machine, all users have a user account which they may use to connect through SSH. All users are sent initial credentials when the system has been configured. This section describes how to connect to the Wyvern server to access your content.
+
+\subsection{Initial Setup}
+Firstly, determine which SSH client you will use to connect to the Wyvern. For Windows users, we recommend either Mosh via the Google Chrome extension (\url{https://mosh.org/}) or Putty (\url{http://www.putty.org/}). Both tools are excellent and provide secure access to server resources. To connect to the server, start the application and fill in the \textit{wyvern.xy} as the hostname, \textit{22} as the port, and click connect. You may also need to fill in your username. When you are presented with a password prompt, enter the password, and you should been connected.
+
+Mac OS and Linux (Unix) users will already have a command, \textit{ssh}, available through the terminal application. If you are on Windows, and have either MinGW or Cygwin (linux terminal tools) installed, this command may also be available to you. You may run the \textit{ssh} command as such:
+
+\begin{lstlisting}[language=bash]
+$ ssh <user>@wyvern.pravian.net
+\end{lstlisting}
+
+When asked if you should continue connected, select 'yes'. You are then presented with a password prompt. Enter the password you have been provided with, and you have connected successfully to the Wyvern server.
+
+\subsection{Secure Key Pairs}
+As authentication with a password is less secure than using public key cryptography (see \url{https://security.stackexchange.com/questions/69407/why-is-using-an-ssh-key-more-secure-than-using-passwords}), Wyvern users are asked to set up keypair authentication within one week. \textbf{After this period has passed, it will no longer be possible to authenticate with a password}. By using keypair authentication, connecting to the server becomes both easier and more secure. How to setup public key authentication is described below.
+
+\subsubsection{Windows}
+For Windows users, we recommend installing Git SCM (\url{https://git-scm.com/}). Git SCM comes with a great console application, \textit{ssh-copy-id}, which installs your SSH key on the Wyvern server automatically. Make sure you check "add to PATH" when during installation. Once Git SCM is installed, open "Git Bash" and execute generate a new key using the following commands:
+
+\begin{lstlisting}[language=bash]
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+$ eval $(ssh-agent -s)
+$ ssh-add ~/.ssh/id_rsa
+\end{lstlisting}
+
+Now, you should upload the generated public key to the Wyvern server. You may be asked for your password during this step:
+
+\begin{lstlisting}[language=bash]
+$ ssh-copy-id <user>@wyvern.pravian.net
+\end{lstlisting}
+
+If everything proceeded correctly, you should now have keypair authentication set up correctly. If you are not asked for a password, then the keys have been set up correctly. You can verify this by running:
+
+\begin{lstlisting}[language=bash]
+$ ssh <user>@wyvern.pravian.net
+\end{lstlisting}
+
+If you are using Putty, then you still need to instruct Putty to use your new keypair: Open Menu Start, type \textit{puttygen}. The putty generator tool will open. Click "load", browse to \textit{C:\textbackslash Users \textbackslash [user]\textbackslash .ssh\textbackslash}, and select the \textit{id\_ rsa.pub} file. Click "Save private key" and "Save public key". Now, open Putty, and click "SSH" under connection, and select your saved \textit{.ppk} file.
+
+If you are using the Mosh for Google Chrome extension simply select the \textit{id\_ rsa.pub} key after clicking "add SSH key" in the main connection interface.
+
+If all went well, you should now be able to connect without a password.
+
+\subsubsection{Mac OS and Linux}
+Configuring SSH keys is very simple on Mac OS and Linux. Simply run the following command in a terminal:
+
+\begin{lstlisting}[language=bash]
+$ ssh-copy-id <user>@wyvern.pravian.net
+\end{lstlisting}
+
+If everything proceeded correctly, you should now have keypair authentication set up correctly. You can verify this by running:
+
+\begin{lstlisting}[language=bash]
+$ ssh <user>@wyvern.pravian.net
+\end{lstlisting}
+
+
+If all went well, you should now be able to connect without a password.
+
+\end{appendices}
+
+\end{document}
