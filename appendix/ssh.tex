@@ -1,0 +1,63 @@
+\section{SSH Access}
+\label{sec:ssh}
+
+On the Wyvern machine, all users have a user account which they may use to connect through SSH. All users are sent initial credentials when the system has been configured. This section describes how to connect to the Wyvern server to access your content.
+
+\subsection{Initial Setup}
+Firstly, determine which SSH client you will use to connect to the Wyvern. For Windows users, we recommend either Mosh via the Google Chrome extension (\url{https://mosh.org/}) or Putty (\url{http://www.putty.org/}). Both tools are excellent and provide secure access to server resources. To connect to the server, start the application and fill in the \textit{wyvern.xy} as the hostname, \textit{22} as the port, and click connect. You may also need to fill in your username. When you are presented with a password prompt, enter the password, and you should been connected.
+
+Mac OS and Linux (Unix) users will already have a command, \textit{ssh}, available through the terminal application. If you are on Windows, and have either MinGW or Cygwin (linux terminal tools) installed, this command may also be available to you. You may run the \textit{ssh} command as such:
+
+\begin{lstlisting}[language=bash]
+$ ssh <user>@wyvern.xyz
+\end{lstlisting}
+
+When asked if you should continue connected, select 'yes'. You are then presented with a password prompt. Enter the password you have been provided with, and you have connected successfully to the Wyvern server.
+
+\subsection{Secure Key Pairs}
+As authentication with a password is less secure than using public key cryptography (see \url{https://security.stackexchange.com/questions/69407/why-is-using-an-ssh-key-more-secure-than-using-passwords}), Wyvern users are asked to set up keypair authentication within one week. \textbf{After this period has passed, it will no longer be possible to authenticate with a password}. By using keypair authentication, connecting to the server becomes both easier and more secure. How to setup public key authentication is described below.
+
+\subsubsection{Windows}
+For Windows users, we recommend installing Git SCM (\url{https://git-scm.com/}). Git SCM comes with a great console application, \textit{ssh-copy-id}, which installs your SSH key on the Wyvern server automatically. Make sure you check "add to PATH" when during installation. Once Git SCM is installed, open "Git Bash" and execute generate a new key using the following commands:
+
+\begin{lstlisting}[language=bash]
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+$ eval $(ssh-agent -s)
+$ ssh-add ~/.ssh/id_rsa
+\end{lstlisting}
+
+Now, you should upload the generated public key to the Wyvern server. You may be asked for your password during this step:
+
+\begin{lstlisting}[language=bash]
+$ ssh-copy-id <user>@wyvern.xyz
+\end{lstlisting}
+
+If everything proceeded correctly, you should now have keypair authentication set up correctly. If you are not asked for a password, then the keys have been set up correctly. You can verify this by running:
+
+\begin{lstlisting}[language=bash]
+$ ssh <user>@wyvern.xyz
+\end{lstlisting}
+
+If you are using Putty, then you still need to instruct Putty to use your new keypair: Open Menu Start, type \textit{puttygen}. The putty generator tool will open. Click "load", browse to \textit{C:\textbackslash Users \textbackslash [user]\textbackslash .ssh\textbackslash}, and select the \textit{id\_ rsa.pub} file. Click "Save private key" and "Save public key". Now, open Putty, and click "SSH" under connection, and select your saved \textit{.ppk} file.
+
+If you are using the Mosh for Google Chrome extension simply select the \textit{id\_ rsa.pub} key after clicking "add SSH key" in the main connection interface.
+
+If all went well, you should now be able to connect without a password.
+
+\subsubsection{Mac OS and Linux}
+Configuring SSH keys is very simple on Mac OS and Linux. Simply run the following command in a terminal:
+
+\begin{lstlisting}[language=bash]
+$ ssh-copy-id <user>@wyvern.xyz
+\end{lstlisting}
+
+If everything proceeded correctly, you should now have keypair authentication set up correctly. You can verify this by running:
+
+\begin{lstlisting}[language=bash]
+$ ssh <user>@wyvern.xyz
+\end{lstlisting}
+
+
+If all went well, you should now be able to connect without a password.
+
+\newpage

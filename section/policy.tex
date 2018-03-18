@@ -1,0 +1,26 @@
+
+\section{Policy}
+\label{sec:policy}
+Below is described an overview of the initial server policies. Note that the policies in effect may change over time as the needs and desires of the Wyvern community change. Most importantly, it is necessary users have \textit{trust} and \textit{respect} for one another. As this project is an ambitious and community-driven effort, it is in the best interest for everyone that each user makes a wholehearted attempt to ensure everyone is satisfied. This, in turn, means that at times some concessions must be made. Whilst Wyvern should incorporate a democratic decision making process, each user must attempt to remain friendly to their co-users and resolve conflicts in a group effort.
+
+\subsection{Fair Use}
+As the Wyvern server is shared across users, the available resources will be shared as well. This means that each user must put an effort to ensuring that their applications do not greatly overextend the server's resources. Some applications, such as game servers, will benefit multiple users, and thus may take up a large fraction of the allocated quota. Whilst a hard-limit is not placed on the available resources, users should use their best judgment and strive to avoid over allocation. This does not mean that if a fraction of the server's resource capacity is unused, users should avoid allocating it. Using the server to its fullest extent is allowed, as long as other users are not limited.
+
+\subsection{Democratic Management}
+In effect, the Wyvern project is designed to be managed in a democratic fashion. If large changes are desired to be made, the director should host community meetings in which all Wyvern users should vote. The director should attempt to host these meetings to the best of their ability and ensure every user's wishes are taken into account.
+
+\section{Technical Aspects}
+\label{sec:technical}
+Operating a community server such as Wyvern is only possible when certain technical decisions are taken with care.
+
+\subsection{Operating System}
+When selecting a proper operating system, it may be beneficial to chose either a RedHat-based (such as CentOS) or Debian-based (such as Ubuntu-Server) Linux distribution. The reason for this is the availability of on-line support for both operating system branches, as these are the most popular choices. For this reason, the chief of technology should advise the users on which option might be best suited.
+
+\subsection{Users}
+On Wyvern, each user should obtain a unique account which may be used to access the server through SSH. In addition, each user is allowed to store files and applications ins their home directories (\textit{/home/<user>/}). These directories may have an imposed disk space quota to ensure no user is restricted in space. If specific platform applications or tool-chains (Java, Docker, SoftEther), need be installed with root-privileges, users should contact the chief of technology. Administrative users will each have a \textit{separate} account which they may use to install such applications. However, this account \textit{should never be used} to host personal applications.
+
+\subsection{Security}
+It is important that security plays a major role in the management of the server. For this reason, users may be required to log in to SSH through a security certificate, instead of password-interactive authentication. In addition, requests for non-secure applications, such as outdated HTTP daemons and known applications with security vulnerabilities, may be declined.
+
+\subsection{Shared Applications}
+For certain applications such as game servers, it may be beneficial to allocate a separate user account so several users, hereafter referred to as \textit{application owners}, may manage the application collaboratively. As previously stated, the fair use policy will be less strict for such applications.
