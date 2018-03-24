@@ -1,0 +1,59 @@
+\documentclass[a4paper]{article}
+
+% English
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+% Table of contents
+\usepackage[toc,page]{appendix}
+
+% Tables
+\usepackage{tabularx}
+
+% Labels for items
+\usepackage{enumitem}
+
+% Symbols
+\usepackage[left]{eurosym}
+
+% Urls
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+
+% Code listings
+\usepackage{listings}
+
+% Meta
+\providecommand{\versionnumber}{1.3}
+\title{
+    Wyvern Articles of Association\\
+    \vspace{10px}
+    \large \textit{Version \versionnumber}
+}
+\author{
+    Jerom van der Sar and\\
+    Casper Henkes
+}
+\date{\today}
+
+
+\begin{document}
+
+% Title page
+\pagenumbering{gobble}
+\begin{titlepage}
+    \maketitle
+    \begin{abstract}
+        This document describes the process in which the Wyvern community is governed. The roles, responsibilities, and rights of the administration team are formally introduced. In addition, the democratic voting process is described, the financial responsibilities of Wyvern members are discussed, and lastly, possible commissions are presented.
+    \end{abstract}
+\end{titlepage}
+\pagenumbering{arabic}
+
+
+\input{section/community}
+\input{section/democracy}
+\input{section/financial}
+\input{section/lan}
+
+\end{document}

@@ -3,12 +3,16 @@
 % English
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage[T1]{fontenc}
 
 % Table of contents
 \usepackage[toc,page]{appendix}
 
 % Tables
 \usepackage{tabularx}
+
+% Labels for items
+\usepackage{enumitem}
 
 % Symbols
 \usepackage[left]{eurosym}
@@ -23,12 +27,15 @@
 % Meta
 \providecommand{\versionnumber}{1.3}
 \title{
-    Wyvern: A Community Hosted\\
-    Bare-Metal Server\\
+    Wyvern: A Community Approach to\\
+    Shared Server Hosting\\
     \vspace{10px}
     \large \textit{Version \versionnumber}
 }
-\author{Jerom van der Sar}
+\author{
+    Jerom van der Sar and\\
+    Casper Henkes
+}
 \date{\today}
 
 
@@ -54,6 +61,8 @@
 \input{section/introduction}
 \input{section/administration}
 \input{section/policy}
+% TODO: LAN
+%\input{section/lan}
 
 % Conclusion?
 
@@ -62,7 +71,6 @@
 \appendix
 \appendixpage
 
-\input{appendix/guidelines}
 \input{appendix/ssh}
 
 
