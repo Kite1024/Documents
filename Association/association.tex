@@ -5,6 +5,10 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 
+% No trailing sentences
+% https://tex.stackexchange.com/questions/4152/how-do-i-prevent-widow-orphan-lines
+\usepackage[all]{nowidow}
+
 % Table of contents
 \usepackage[toc,page]{appendix}
 
@@ -25,7 +29,7 @@
 \usepackage{listings}
 
 % Meta
-\providecommand{\versionnumber}{1.3}
+\providecommand{\versionnumber}{1.4}
 \title{
     Wyvern Articles of Association\\
     \vspace{10px}
@@ -51,9 +55,9 @@
 \pagenumbering{arabic}
 
 
-\input{section/community}
-\input{section/democracy}
-\input{section/financial}
-\input{section/lan}
+\include{section/community}
+\include{section/democracy}
+\include{section/financial}
+\include{section/lan}
 
 \end{document}
